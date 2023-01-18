@@ -74,7 +74,8 @@ git clone https://github.com/taikoxyz/simple-taiko-node.git
 cd simple-taiko-node
 cp .env.sample .env
 
-sed -i -e "s/ENABLE_PROPOSER = false/ENABLE_PROPOSER = true/" $HOME/simple-taiko-node/.env
+ENABLE_PROPOSER="true"
+sed -i -e "s/^ENABLE_PROPOSER *=.*/ENABLE_PROPOSER = \"$ENABLE_PROPOSER\"/" $HOME/simple-taiko-node/.env
 sed -i -e "s/^L1_PROPOSER_PRIVATE_KEY *=.*/L1_PROPOSER_PRIVATE_KEY = \"$KEY\"/" $HOME/simple-taiko-node/.env
 sed -i -e "s/^L2_SUGGESTED_FEE_RECIPIENT *=.*/L2_SUGGESTED_FEE_RECIPIENT = \"$ADDRESS\"/" $HOME/simple-taiko-node/.env
 

@@ -37,21 +37,6 @@ echo "============================================================"
 echo "Install start"
 echo "============================================================"
 
-# set vars
-if [ ! $KEY ]; then
-	read -p "Enter private key: " KEY
-	echo 'export KEY='$KEY >> $HOME/.bash_profile
-fi
-if [ ! $RPC_HTTP ]; then
-	read -p "Enter RPC HTTP: " RPC_HTTP
-	echo 'export RPC_HTTP='$RPC_HTTP >> $HOME/.bash_profile
-fi
-if [ ! $RPC_WS ]; then
-	read -p "Enter RPC WS: " RPC_WS
-	echo 'export RPC_WS='$RPC_WS >> $HOME/.bash_profile
-fi
-source $HOME/.bash_profile
-
 # update
 sudo apt update && sudo apt upgrade -y
 
@@ -80,9 +65,6 @@ cp .env.sample .env
 
 ENABLE_PROVER="true"
 sed -i -e "s/^ENABLE_PROVER *=.*/ENABLE_PROVER = \"$ENABLE_PROVER\"/" $HOME/simple-taiko-node/.env
-sed -i -e "s/^L1_PROVER_PRIVATE_KEY *=.*/L1_PROVER_PRIVATE_KEY = \"$KEY\"/" $HOME/simple-taiko-node/.env
-sed -i -e "s/^L1_ENDPOINT_HTTP *=.*/L1_ENDPOINT_HTTP = \"$RPC_HTTP\"/" $HOME/simple-taiko-node/.env
-sed -i -e "s/^L1_ENDPOINT_WS *=.*/L1_ENDPOINT_WS = \"$RPC_WS\"/" $HOME/simple-taiko-node/.env
 
 # start service
 docker compose up -d

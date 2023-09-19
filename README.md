@@ -59,8 +59,10 @@ nano .env
 
 - В поле L1_ENDPOINT_HTTP вставляем вашу ссылку https
 - В поле L1_ENDPOINT_WS вставляем вашу ссылку wss
-- В поле ENABLE_PROVER меняем с false на true
-- В поле L1_PROVER_PRIVATE_KEY вставляем ваш приватный ключ Metamask.
+- В поле ENABLE_PROPOSER меняем с false на true
+- В поле L1_PROPOSER_PRIVATE_KEY вставляем ваш приватный ключ Metamask.
+- В поле L2_SUGGESTED_FEE_RECIPIENT вставляем свой адрес Metamask.
+- В поле PROVER_ENDPOINTS вставляем данное значение https://this.is.just.an.example.prover
 
 После того как все сделали в терминале кликаем CTRL+O, затем Enter, затем CTRL+X, чтобы выйти.
 
@@ -71,7 +73,59 @@ nano .env
 docker compose up -d
 ```
 
-Просмотр логов
+Команды:
+
+Запуск ноды
+```
+docker compose up -d
+```
+
+Остановить ноду
+```
+docker compose down
+```
+
+Рестарт
+```
+docker compose down && docker compose up -d
+```
+
+Обновить ноду
+```
+git pull origin main && docker compose pull
+```
+
+Удалить ноду
+```
+docker compose down -v
+```
+
+Просмотр всех логов
 ```
 docker compose logs -f
+```
+
+Просмотр l2_execution_engine логов
+```
+docker compose logs -f l2_execution_engine
+```
+
+Просмотр taiko_client_driver логов
+```
+docker compose logs -f taiko_client_driver
+```
+
+Просмотр taiko_client_proposer логов
+```
+docker compose logs -f taiko_client_proposer
+```
+
+Просмотр taiko_client_prover_relayer логов
+```
+docker compose logs -f taiko_client_prover_relayer
+```
+
+Просмотр zkevm_chain_prover_rpcd логов
+```
+docker compose logs -f zkevm_chain_prover_rpcd
 ```

@@ -66,7 +66,7 @@ nano .env
 - В поле ENABLE_PROPOSER меняем с false на true
 - В поле L1_PROPOSER_PRIVATE_KEY вставляем ваш приватный ключ Metamask.
 - В поле L2_SUGGESTED_FEE_RECIPIENT вставляем свой адрес Metamask.
-- В поле PROVER_ENDPOINTS вставляем данное значение https://this.is.just.an.example.prover
+- В поле PROVER_ENDPOINTS вставляем данное значение http://prover.dojonode.xyz/
 
 После того как все сделали в терминале кликаем CTRL+O, затем Enter, затем CTRL+X, чтобы выйти.
 
